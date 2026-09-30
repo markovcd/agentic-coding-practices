@@ -15,7 +15,8 @@ Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so 
 - @docs/agents/rules/testing.md — a behavior change lands with a test that failed before it; test names state the rule.
 - @docs/agents/rules/honest-tests.md — a failing test is fixed by fixing the code, never by weakening, skipping or special-casing the test.
 - @docs/agents/rules/security.md — secrets stay out of everything; outside input is checked where it enters; a check is never loosened to make something work.
-- @docs/agents/rules/ci-cd.md — CI runs the gate itself; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
+- @docs/agents/rules/ci-cd.md — land small and often, a red mainline is fixed before anything else, and the mainline is always releasable.
+- @docs/agents/rules/pipeline.md — CI runs the gate itself; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
 - @docs/agents/rules/saved-data.md — what was written stays readable; a format change carries its migration and a test that loads the old shape.
 - @docs/agents/rules/one-type-per-file.md — one top-level type per file, named for it; split a file that holds several whenever a change touches it.
 - @docs/agents/rules/prose-style.md — succinct comments that never narrate history.
