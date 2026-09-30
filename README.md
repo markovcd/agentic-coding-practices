@@ -14,6 +14,7 @@ AGENTS.md                     entry point; imports every rule
 CLAUDE.md                     one line: @AGENTS.md
 docs/agents/rules/*.md        standing rules, loaded every session
 docs/glossary.md              template: one word per thing
+docs/handoff/README.md        template: out-of-scope issues, one file each
 .claude/skills/*/SKILL.md     task know-how, loaded when a task matches
 .claude/commands/bughunt.md   /bughunt
 .claude/agents/taste-check.md a gut-reaction reviewer
@@ -48,6 +49,7 @@ command, and where the architecture decisions live.
 | `rules/testing.md` | A change carries a test that failed first; names are rules; skips say why |
 | `rules/honest-tests.md` | Fix the code, never the test: no weakened assertions, skips or test-only branches |
 | `rules/security.md` | Secrets out of everything, input checked at the boundary, no loosened checks |
+| `rules/ci-cd.md` | CI runs the gate itself; pinned, least-permission workflows; a release is one script that refuses early and ships signed |
 | `rules/saved-data.md` | Versioned formats with upgrade steps, ids that are forever, contracts that only grow |
 | `rules/prose-style.md` | Short comments that never narrate history |
 | `rules/one-type-per-file.md` | One top-level type per file, named for it |

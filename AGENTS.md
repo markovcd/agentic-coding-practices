@@ -6,7 +6,7 @@ commands, `docs/adr/` for the decisions behind the design, and
 
 - **The gate:** `<one command that restores, builds and runs every test in a clean environment>`. It is the truth; a local run can be green about code it skipped.
 - **Fast loop:** `<command that runs one test class or file>`.
-- **TODO.md** lists work asked for and not yet started. Add to it when the user says "add to the todo", and take an item off in the commit that lands it.
+- **TODO.md** lists work asked for and not yet started. Add to it when the user says "add to the todo", and take an item off in the commit that lands it. A plan, an audit or an out-of-scope problem too long for a line is written up in [docs/handoff/](docs/handoff/README.md) and linked from its item.
 
 Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so read all of them before starting; Claude Code imports them through the paths below:
 
@@ -15,6 +15,7 @@ Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so 
 - @docs/agents/rules/testing.md — a behavior change lands with a test that failed before it; test names state the rule.
 - @docs/agents/rules/honest-tests.md — a failing test is fixed by fixing the code, never by weakening, skipping or special-casing the test.
 - @docs/agents/rules/security.md — secrets stay out of everything; outside input is checked where it enters; a check is never loosened to make something work.
+- @docs/agents/rules/ci-cd.md — CI runs the gate itself; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
 - @docs/agents/rules/saved-data.md — what was written stays readable; a format change carries its migration and a test that loads the old shape.
 - @docs/agents/rules/one-type-per-file.md — one top-level type per file, named for it; split a file that holds several whenever a change touches it.
 - @docs/agents/rules/prose-style.md — succinct comments that never narrate history.
