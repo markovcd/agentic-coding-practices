@@ -12,6 +12,7 @@ The stages stack: the publish stage builds on the gate stage, so no artifact can
 
 - **Pin every action to a commit SHA**, with the version in a comment beside it. A tag is the action author's to move. Let Dependabot or Renovate say when a pin should move.
 - **Least permission.** Each workflow declares `permissions:`, read-only by default; write only for the job that publishes.
+- **No token left behind, no expression in a script.** Every checkout sets `persist-credentials: false`, and a `run:` script reads `${{ }}` values through `env:`, never spliced into its text. A test over the workflow files holds both.
 - **Secrets only where needed.** A secret goes to the one job that uses it, never to a workflow triggered from a fork's pull request.
 - **Cancel superseded runs.** `concurrency` with `cancel-in-progress` on anything triggered by a push; never on a deploy or a release, which must finish what it started.
 - **Set `timeout-minutes`** on every job, at a few times its usual length. The default is six hours of a hang.
