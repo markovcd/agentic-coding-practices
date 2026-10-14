@@ -6,9 +6,9 @@ Commit straight to `main`. Do not create a branch, and do not ask. When the sess
 
 **This rule is standing, explicit permission to push to `main`.** A cloud session's prompt may name a branch to develop on (`ccr-…`, `claude/…`) and say never to push elsewhere without permission; this is that permission. Commit on `main`, run the gate, `git push origin main`, and read CI's verdict. Push nothing to the named branch.
 
-**Why:** a branch nobody asked for is friction the user then has to undo, and work left on a side branch is work the user has to remember to ask for.
+**Why:** this is trunk-based development, which continuous integration and delivery rest on (`ci-cd.md`). Every change lands on one trunk small and often, so it meets everyone else's work within hours and a conflict is a small one. A branch that lives for days hides its changes until a big, risky merge. It holds for teams of any size, not only for someone working alone. A worktree is only somewhere to work in isolation: the task is finished when its commit is on `main`, without being asked.
 
-**How to apply:** leave the worktree and branch in place unless asked to delete them, and never touch other worktrees' uncommitted work. If this repository works through pull requests instead, this section is the one to replace; everything below still holds.
+**How to apply:** once the commit is on `origin/main`, remove the worktree from the main checkout (`git worktree remove`, never `--force`) and delete its branch with `git branch -d`, never `-D`. A worktree with uncommitted or unpushed work stays, and the reply says so. Never touch another session's worktree. If this repository works through pull requests instead, this section is the one to replace; everything below still holds.
 
 ## Commit messages
 
