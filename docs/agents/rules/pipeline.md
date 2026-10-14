@@ -8,12 +8,15 @@ The stages stack: the publish stage builds on the gate stage, so no artifact can
 
 **Why:** two descriptions of what a change has to pass drift apart, and the one that drifts is the one nobody runs locally.
 
+The workflows and what starts each are drawn in one diagram in the repo, and a test fails when a workflow is added, renamed or removed without the drawing following.
+
 ## Workflows are code that holds the keys
 
 - **Pin every action to a commit SHA**, with the version in a comment beside it. A tag is the action author's to move. Let Dependabot or Renovate say when a pin should move.
 - **Least permission.** Each workflow declares `permissions:`, read-only by default; write only for the job that publishes.
 - **No token left behind, no expression in a script.** Every checkout sets `persist-credentials: false`, and a `run:` script reads `${{ }}` values through `env:`, never spliced into its text. A test over the workflow files holds both.
 - **Secrets only where needed.** A secret goes to the one job that uses it, never to a workflow triggered from a fork's pull request.
+- **Hosted runners, on every OS that ships.** Every push runs the gate, and the tests only one platform can run go on that platform; otherwise they run nowhere. A self-hosted runner is opt-in, started by hand, and for the mainline only: a mainline that waits on a machine that is asleep is not integrated, and on a public repo a fork's pull request on that machine is remote code execution.
 - **Cancel superseded runs.** `concurrency` with `cancel-in-progress` on anything triggered by a push; never on a deploy or a release, which must finish what it started.
 - **Set `timeout-minutes`** on every job, at a few times its usual length. The default is six hours of a hang.
 - **Filter deploys on paths**, with a comment saying the list has to grow when the deployed thing gains a dependency.
@@ -33,7 +36,7 @@ Before tagging or publishing, check and stop with a reason on the first that fai
 - the branch tip is not the commit that would be released;
 - the tag already exists;
 - the changelog's `Unreleased` section is missing or empty;
-- the gate has not passed on that exact commit. **No CI run at all is not a pass**: a commit that was never pushed has nothing red about it;
+- the gate has not passed on that exact commit, nor has any check kept apart from it (a mobile build, a smoke test on a device or emulator). **No CI run at all is not a pass**: a commit that was never pushed has nothing red about it;
 - a locked restore fails.
 
 The checks are safe to run any time; only the final dispatch publishes, and it waits for the user's go.
