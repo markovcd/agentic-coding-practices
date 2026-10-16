@@ -16,7 +16,7 @@ Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so 
 - @docs/agents/rules/honest-tests.md — a failing test is fixed by fixing the code, never by weakening, skipping or special-casing the test.
 - @docs/agents/rules/security.md — secrets stay out of everything; outside input is checked where it enters; a check is never loosened to make something work.
 - @docs/agents/rules/ci-cd.md — land small and often, a red mainline is fixed before anything else, and the mainline is always releasable.
-- @docs/agents/rules/pipeline.md — CI runs the gate itself; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
+- @docs/agents/rules/pipeline.md — CI runs the gate itself, within a time budget; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
 - @docs/agents/rules/saved-data.md — what was written stays readable; a format change carries its migration and a test that loads the old shape.
 - @docs/agents/rules/one-type-per-file.md — one top-level type per file, named for it; split a file that holds several whenever a change touches it.
 - @docs/agents/rules/prose-style.md — succinct comments that never narrate history.
@@ -36,4 +36,4 @@ Task-specific know-how is in `.claude/skills/`, loaded when a skill's descriptio
 - `running-the-app`: before launching the real app, wait for any other instance; drive only the process you started.
 - `windows-shell`: PowerShell and Bash-heredoc pitfalls that corrupt files.
 
-Commands in `.claude/commands/` are run by name: `/bughunt` hunts for bugs, confirms each as a failing test, fixes it, and files the test where it belongs.
+Commands in `.claude/commands/` are run by name: `/bughunt` hunts for bugs, confirms each as a failing test, fixes it, and files the test where it belongs. `/mutate` plants plausible bugs in the lines a commit changed, writes a test for each one the suite missed, and logs the score for `scripts/mutation-score.py`.

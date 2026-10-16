@@ -1,6 +1,6 @@
 # Coding practices for an agent
 
-Standing rules, skills and a command that make Claude Code (or any agent that
+Standing rules, skills and commands that make Claude Code (or any agent that
 reads `AGENTS.md`) work in a repository the way a careful engineer would.
 Distilled from a large agent-built codebase; everything specific to that
 project is gone, and what is left holds in any language.
@@ -17,6 +17,8 @@ docs/glossary.md              template: one word per thing
 docs/handoff/README.md        template: out-of-scope issues, one file each
 .claude/skills/*/SKILL.md     task know-how, loaded when a task matches
 .claude/commands/bughunt.md   /bughunt
+.claude/commands/mutate.md    /mutate
+scripts/mutation-score.py     /mutate's rolling score
 .claude/agents/taste-check.md a gut-reaction reviewer
 .claude/output-styles/terse.md optional wording style
 ```
@@ -50,7 +52,7 @@ command, and where the architecture decisions live.
 | `rules/honest-tests.md` | Fix the code, never the test: no weakened assertions, skips or test-only branches |
 | `rules/security.md` | Secrets out of everything, input checked at the boundary, no loosened checks |
 | `rules/ci-cd.md` | Continuous integration and delivery as practice: land small and often, stop the line on red, keep the mainline releasable |
-| `rules/pipeline.md` | CI runs the gate itself; pinned, least-permission workflows; a release is one script that refuses early and ships signed |
+| `rules/pipeline.md` | CI runs the gate itself, within a time budget; pinned, least-permission workflows; a release is one script that refuses early and ships signed |
 | `rules/saved-data.md` | Versioned formats with upgrade steps, ids that are forever, contracts that only grow |
 | `rules/prose-style.md` | Short comments that never narrate history |
 | `rules/one-type-per-file.md` | One top-level type per file, named for it |
@@ -67,4 +69,5 @@ command, and where the architecture decisions live.
 | `skills/running-the-app` | Drive only the process you started, and mark its window |
 | `skills/windows-shell` | Encoding and escape pitfalls that corrupt files on Windows |
 | `commands/bughunt.md` | Find bugs as failing tests, fix, file the tests under the rule they broke |
+| `commands/mutate.md` | Plant plausible bugs in a commit's diff; every one the tests miss gets a test; log the score |
 | `agents/taste-check.md` | How the code feels, not whether it is correct |

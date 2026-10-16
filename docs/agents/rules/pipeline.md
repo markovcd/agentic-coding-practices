@@ -8,6 +8,12 @@ The stages stack: the publish stage builds on the gate stage, so no artifact can
 
 **Why:** two descriptions of what a change has to pass drift apart, and the one that drifts is the one nobody runs locally.
 
+## The gate has a time budget
+
+Give the gate's test run a budget, ten minutes or so, and have its summary print the run's time against it with each test project's time beside, slowest first. Past the budget it warns, never fails. Over budget, shard the run by project across parallel jobs, each still running everything in it; do not start running only the tests a change seems to reach while pushes go straight to the mainline, since a missed dependency then lands red unseen.
+
+**Why:** a suite grows with the code, and a gate that takes half an hour is one people start working around. A number on every run says so long before it is a habit.
+
 The workflows and what starts each are drawn in one diagram in the repo, and a test fails when a workflow is added, renamed or removed without the drawing following.
 
 ## Workflows are code that holds the keys
