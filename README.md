@@ -18,6 +18,8 @@ docs/handoff/README.md        template: out-of-scope issues, one file each
 .claude/skills/*/SKILL.md     task know-how, loaded when a task matches
 .claude/commands/bughunt.md   /bughunt
 .claude/commands/mutate.md    /mutate
+.claude/commands/burn.md      /burn
+docs/agents/burn-log.tsv      /burn's log, header only
 scripts/mutation-score.py     /mutate's rolling score
 .claude/agents/taste-check.md a gut-reaction reviewer
 .claude/output-styles/terse.md optional wording style
@@ -70,4 +72,5 @@ command, and where the architecture decisions live.
 | `skills/windows-shell` | Encoding and escape pitfalls that corrupt files on Windows |
 | `commands/bughunt.md` | Find bugs as failing tests, fix, file the tests under the rule they broke |
 | `commands/mutate.md` | Plant plausible bugs in a commit's diff; every one the tests miss gets a test; log the score |
+| `commands/burn.md` | Spend spare tokens: take the quality or stability chore run longest ago, worst hack first, land one piece, log it |
 | `agents/taste-check.md` | How the code feels, not whether it is correct |

@@ -36,4 +36,4 @@ Task-specific know-how is in `.claude/skills/`, loaded when a skill's descriptio
 - `running-the-app`: before launching the real app, wait for any other instance; drive only the process you started.
 - `windows-shell`: PowerShell and Bash-heredoc pitfalls that corrupt files.
 
-Commands in `.claude/commands/` are run by name: `/bughunt` hunts for bugs, confirms each as a failing test, fixes it, and files the test where it belongs. `/mutate` plants plausible bugs in the lines a commit changed, writes a test for each one the suite missed, and logs the score for `scripts/mutation-score.py`.
+Commands in `.claude/commands/` are run by name: `/bughunt` hunts for bugs, confirms each as a failing test, fixes it, and files the test where it belongs. `/mutate` plants plausible bugs in the lines a commit changed, writes a test for each one the suite missed, and logs the score for `scripts/mutation-score.py`. `/burn` spends spare tokens on the quality or stability chore in its list that ran longest ago, worst hack first, and logs it in `docs/agents/burn-log.tsv`.
