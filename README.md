@@ -52,16 +52,17 @@ command, and where the architecture decisions live.
 | `rules/code-style.md` | Match the file; failures are values; one place knows a thing; no speculative abstraction |
 | `rules/testing.md` | A change carries a test that failed first; names are rules; skips say why |
 | `rules/honest-tests.md` | Fix the code, never the test: no weakened assertions, skips or test-only branches |
-| `rules/security.md` | Secrets out of everything, input checked at the boundary, no loosened checks |
+| `rules/security.md` | Secrets out of everything, no loosened checks |
 | `rules/ci-cd.md` | Continuous integration and delivery as practice: land small and often, stop the line on red, keep the mainline releasable |
-| `rules/pipeline.md` | CI runs the gate itself, within a time budget; pinned, least-permission workflows; a release is one script that refuses early and ships signed |
-| `rules/saved-data.md` | Versioned formats with upgrade steps, ids that are forever, contracts that only grow |
 | `rules/prose-style.md` | Short comments that never narrate history |
 | `rules/one-type-per-file.md` | One top-level type per file, named for it |
 | `rules/agent-drivability.md` | Every feature checkable without eyes on a window; a hack is a feature request |
 | `rules/propose-refactors.md` | Say when code has outgrown its shape, after the task, outside its commit |
 | `rules/terminology.md` | Hold the glossary's words, in conversation too |
 | `rules/working-habits.md` | Stop when done, report failure plainly, verify cheaply, hold "I don't know" |
+| `skills/pipeline` | CI runs the gate itself, within a time budget; pinned, least-permission workflows; a release is one script that refuses early and ships signed |
+| `skills/saved-data` | Versioned formats with upgrade steps, ids that are forever, contracts that only grow |
+| `skills/outside-input` | Input checked at the boundary: sizes, numbers, paths, text, code |
 | `skills/tests` | Rank a run by duration; a slow test is a defect; scenarios as requirements |
 | `skills/dependencies` | Check what is outdated before big work; cheap upgrades now, expensive ones handed off |
 | `skills/adrs` | Read them before proposing a refactor; amend or rewrite; number at commit time |

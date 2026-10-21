@@ -14,10 +14,8 @@ Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so 
 - @docs/agents/rules/code-style.md — new code is indistinguishable from the file it lands in; failures are values; one place knows a thing.
 - @docs/agents/rules/testing.md — a behavior change lands with a test that failed before it; test names state the rule.
 - @docs/agents/rules/honest-tests.md — a failing test is fixed by fixing the code, never by weakening, skipping or special-casing the test.
-- @docs/agents/rules/security.md — secrets stay out of everything; outside input is checked where it enters; a check is never loosened to make something work.
+- @docs/agents/rules/security.md — secrets stay out of everything; a check is never loosened to make something work.
 - @docs/agents/rules/ci-cd.md — land small and often, a red mainline is fixed before anything else, and the mainline is always releasable.
-- @docs/agents/rules/pipeline.md — CI runs the gate itself, within a time budget; workflows pinned, least-permission and timed out; a release is one script, refuses before moving anything, and ships signed.
-- @docs/agents/rules/saved-data.md — what was written stays readable; a format change carries its migration and a test that loads the old shape.
 - @docs/agents/rules/one-type-per-file.md — one top-level type per file, named for it; split a file that holds several whenever a change touches it.
 - @docs/agents/rules/prose-style.md — succinct comments that never narrate history.
 - @docs/agents/rules/terminology.md — when the user says a word the glossary rules out, correct it in one line.
@@ -25,15 +23,6 @@ Standing rules are in `docs/agents/rules/`. They apply to nearly every task, so 
 - @docs/agents/rules/propose-refactors.md — code that has gone untidy or ballooned is a refactor to propose, after the task and outside its commit.
 - @docs/agents/rules/working-habits.md — stop when the work is done, report failure plainly, verify at the cheapest level that proves it.
 
-Task-specific know-how is in `.claude/skills/`, loaded when a skill's description matches the task:
-
-- `tests`: rank a run by duration, treat an unexplained slow test as a defect, run narrow while iterating and everything once per commit, write feature scenarios as requirements.
-- `dependencies`: check packages and the toolchain before anything big; take cheap upgrades, hand off expensive ones.
-- `adrs`: check `docs/adr/` before proposing a refactor; rewrite a day-old ADR in place; number a new ADR at commit time.
-- `changelog`: what CHANGELOG.md may contain.
-- `docs-in-step`: a change to anything the docs or site describe updates them in the same commit.
-- `performance`: how to measure without fooling yourself.
-- `running-the-app`: before launching the real app, wait for any other instance; drive only the process you started.
-- `windows-shell`: PowerShell and Bash-heredoc pitfalls that corrupt files.
+Rules that bind only one kind of change are skills in `.claude/skills/`, loaded when their description matches: `pipeline` (workflows, the gate, a release), `saved-data` (anything saved or passed between versions) and `outside-input` (code that reads input from outside). They are as binding as the rules above. Every other skill there is know-how for one task; its name and description are visible every session, so it is not listed here.
 
 Commands in `.claude/commands/` are run by name: `/bughunt` hunts for bugs, confirms each as a failing test, fixes it, and files the test where it belongs. `/mutate` plants plausible bugs in the lines a commit changed, writes a test for each one the suite missed, and logs the score for `scripts/mutation-score.py`. `/burn` spends spare tokens on the quality or stability chore in its list that ran longest ago, worst hack first, and logs it in `docs/agents/burn-log.tsv`.

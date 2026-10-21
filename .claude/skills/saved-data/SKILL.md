@@ -1,3 +1,8 @@
+---
+name: saved-data
+description: Use when changing what is saved or passed between versions - file formats and their version, persisted ids and numbers, positional fields, settings files, databases, a public contract or arguments one version passes another.
+---
+
 # Saved data doesn't break
 
 ## What was written stays readable

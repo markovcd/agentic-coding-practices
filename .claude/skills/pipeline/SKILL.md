@@ -1,3 +1,8 @@
+---
+name: pipeline
+description: Use when editing CI workflows, the gate's container or scripts, dependency-update config, or the release script, or when releasing - pins, permissions, timeouts, secrets, time budget, signing and versions.
+---
+
 # The pipeline
 
 ## One gate, the same everywhere

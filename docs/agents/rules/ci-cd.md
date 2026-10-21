@@ -1,6 +1,12 @@
 # Continuous integration and delivery
 
-Continuous integration is a practice, not a server: everyone lands small changes on the mainline often, every change is verified by the full build and tests, and a broken mainline is fixed before anything else. Continuous delivery follows from it: the mainline is always releasable, so a release is a decision and a button, not a project. The pipeline that checks it is in `pipeline.md`; this is the discipline it serves.
+Continuous integration is a practice, not a server: everyone lands small changes on the mainline often, every change is verified by the full build and tests, and a broken mainline is fixed before anything else. Continuous delivery follows from it: the mainline is always releasable, so a release is a decision and a button, not a project. The pipeline that checks it is the `pipeline` skill; this is the discipline it serves.
+
+## The gate
+
+- One command in a clean environment is the gate, and CI runs exactly that. Nothing skips in CI that runs locally.
+- Capture a build's output to a file and filter it afterwards, never in the pipe; a narrow grep drops the failure lines. A gate failure is the first sentence of the report, with the failing test's name.
+- A change to the workflows, the gate's container or scripts, or a release loads the `pipeline` skill first.
 
 ## Integrate small and often
 
